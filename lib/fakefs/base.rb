@@ -30,6 +30,7 @@ module FakeFS
 
       Kernel.class_eval do
         def open(name, *rest, &block)
+          puts "open fakefs"
           if name =~ /\|.*/
             Kernel.open(name, *rest, &block)
           else
@@ -59,6 +60,7 @@ module FakeFS
       
       Kernel.class_eval do
         def open(*args, &block)
+          puts "open orig"
           Kernel.open(*args, &block)
         end
       end
